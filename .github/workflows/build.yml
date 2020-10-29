@@ -23,6 +23,7 @@ jobs:
           heroku_api_key: 72c24979-875f-4354-875d-5c579b00af5e
           heroku_app_name: "rsoiappdjango"
           heroku_email: "kolesova.nastysha02@gmail.com"
+          appdir: services/SUBFOLDER # subfolder used here
           usedocker: false
         #env:
         #  HEROKU_API_KEY: 72c24979-875f-4354-875d-5c579b00af5e
