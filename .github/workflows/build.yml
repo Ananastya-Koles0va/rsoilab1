@@ -31,6 +31,7 @@ jobs:
         if: github.ref == 'refs/heads/main' && job.status == 'success'
         run: |
           git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
+          git fetch --all --unshallow
           heroku config:set DISABLE_COLLECTSTATIC=1 --app $HEROKU_APP_NAME
           git push heroku HEAD:refs/heads/main --force
           heroku logs --tail -a rsoiappdjango
