@@ -18,23 +18,23 @@ jobs:
       - name: Run tests
         run: python lab1/manage.py test
       - name: Deploy
-        uses: akhileshns/heroku-deploy@v3.4.6
-        with:
-          heroku_api_key: 72c24979-875f-4354-875d-5c579b00af5e
-          heroku_app_name: "rsoiappdjango"
-          heroku_email: "kolesova.nastysha02@gmail.com"
-          appdir: services/SUBFOLDER # subfolder used here
-          usedocker: false
-        #env:
-        #  HEROKU_API_KEY: 72c24979-875f-4354-875d-5c579b00af5e
-        #  HEROKU_APP_NAME: 'rsoiappdjango'
-        #if: github.ref == 'refs/heads/main' && job.status == 'success'
-        #run: |
-        #  git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
-        #  heroku config:set DISABLE_COLLECTSTATIC=1 --app $HEROKU_APP_NAME
-        #  git push heroku HEAD:refs/heads/main --force
-        #  heroku logs --tail -a rsoiappdjango
-        #  heroku run python manage.py migrate -a rsoiappdjango
+        #uses: akhileshns/heroku-deploy@v3.4.6
+        #with:
+        #  heroku_api_key: 72c24979-875f-4354-875d-5c579b00af5e
+        #  heroku_app_name: "rsoiappdjango"
+        #  heroku_email: "kolesova.nastysha02@gmail.com"
+          #appdir: services/SUBFOLDER # subfolder used here
+        #  usedocker: false
+        env:
+          HEROKU_API_KEY: 72c24979-875f-4354-875d-5c579b00af5e
+          HEROKU_APP_NAME: 'rsoiappdjango'
+        if: github.ref == 'refs/heads/main' && job.status == 'success'
+        run: |
+          git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
+          heroku config:set DISABLE_COLLECTSTATIC=1 --app $HEROKU_APP_NAME
+          git push heroku HEAD:refs/heads/main --force
+          heroku logs --tail -a rsoiappdjango
+          heroku run python manage.py migrate -a rsoiappdjango
       - name: Checkout test repository
         uses: actions/checkout@v2
         with:
